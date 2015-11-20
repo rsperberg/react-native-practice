@@ -9,4 +9,5 @@ var {
   AppRegistry
 } = React;
 
-var WeatherProject = require('./WeatherProject'); AppRegistry.registerComponent('WeatherProject', () => WeatherProject);
+var WeatherProject = require('./WeatherProject');
+AppRegistry.registerComponent('WeatherProject', () => WeatherProject);
