@@ -43,6 +43,13 @@ var WeatherProject = React.createClass({
 
   },
   render() {
+  	var content = null;
+  	if (this.state.forecast !== null) {
+  		content = <Forecast
+  					main={this.state.forecast.main}
+  					description={this.state.forecast.description}
+  					temp={this.state.forecast.temp} />;
+  	}
     return (
     <View style={styles.container}>
 		<Image source={require('image!flowers')}
@@ -60,16 +67,15 @@ var WeatherProject = React.createClass({
 					     	onSubmitEditing={this._handleTextChange} />
 					</View>
 				</View>
-			    <Forecast
-			    	main={this.state.forecast.main}
-			    	description={this.state.forecast.description}
-			    	temp={this.state.forecast.temp} />
+			    {content}
 			</View>
 		</Image>
 	</View>
     );
   }
 });
+
+var baseFontSize = 16;
 
 var styles = StyleSheet.create({
   container: {
