@@ -14,11 +14,7 @@ var WeatherProject = React.createClass({
   getInitialState() {
   	return ({
   	  zip: '',
-  	  forecast: {
-  	  	main: 'Clouds',
-  	  	description: 'few clouds',
-  	  	temp: 63.5
-  	  }
+  	  forecast: null
   	});
   },
   // We pass this callback to the <TextInput>
@@ -26,7 +22,25 @@ var WeatherProject = React.createClass({
   	// log statements are viewable in Xcode
   	// and in the Chrome debug tools
   	console.log(event.nativeEvent.text);
-  	this.setState({zip: event.nativeEvent.text});
+  	var zip = event.nativeEvent.text;
+  	this.setState({zip: zip});
+  	fetch('http://api.openweathermap.org/data/2.5/weather?q=' + zip + '&units=imperial')
+  		.then((response) => response.json())
+  		.then((responseJSON) => {
+  		// just taking a look at the format
+  		console.log(responseJSON);
+  		this.setState({
+  			forecast: {
+  				main: responseJSON.weather[0].main,
+  				description: responseJSON.weather[0].description,
+  				temp: responseJSON.main.temp
+  			}
+  		});
+  	})
+  	.catch((error) => {
+  		console.warn(error);
+  	})
+
   },
   render() {
     return (
