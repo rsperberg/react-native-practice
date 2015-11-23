@@ -1,3 +1,7 @@
+/**
+ * WeatherProject React Native App from Bonnie Eisenman, Learning React Native (O'Reilly), p45
+ * https://github.com/facebook/react-native
+ */
 var React = require('react-native');
 var {
   StyleSheet,
@@ -19,10 +23,10 @@ var WeatherProject = React.createClass({
   },
   // We pass this callback to the <TextInput>
   _handleTextChange(event) {
-  	// log statements are viewable in Xcode
+   	var zip = event.nativeEvent.text;
+ 	// log statements are viewable in Xcode
   	// and in the Chrome debug tools
-  	console.log(event.nativeEvent.text);
-  	var zip = event.nativeEvent.text;
+  	console.log(zip);
   	this.setState({zip: zip});
   	fetch('http://api.openweathermap.org/data/2.5/weather?q=' + zip + '&units=imperial')
   		.then((response) => response.json())
@@ -39,9 +43,9 @@ var WeatherProject = React.createClass({
   	})
   	.catch((error) => {
   		console.warn(error);
-  	})
-
+  	});
   },
+
   render() {
   	var content = null;
   	if (this.state.forecast !== null) {
@@ -93,7 +97,7 @@ var styles = StyleSheet.create({
   	opacity: 0.5,
   	flexDirection: 'column',
   	alignItems: 'center'
-  }
+  },
   row: {
   	flex: 1,
   	flexDirection: 'row',
@@ -103,7 +107,7 @@ var styles = StyleSheet.create({
   },
   zipContainer: {
   	flex: 1,
-  	borderBottomColor: '#000000',
+  	borderBottomColor: '#DDDDDD',
   	borderBottomWidth: 1,
   	marginLeft: 5,
   	marginTop: 3

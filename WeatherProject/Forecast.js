@@ -1,3 +1,7 @@
+/**
+ * WeatherProject React Native App from Bonnie Eisenman, Learning React Native (O'Reilly), p45
+ * https://github.com/facebook/react-native
+ */
 var React = require('react-native');
 var {
 	StyleSheet,
