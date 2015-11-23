@@ -109,6 +109,7 @@ var styles = StyleSheet.create({
   mainText: {
     flex: 1,
     fontSize: baseFontSize,
+    fontWeight: 'bold',
     color: '#FFFFFF'
   }
 });
