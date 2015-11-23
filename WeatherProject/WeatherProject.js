@@ -47,7 +47,7 @@ var WeatherProject = React.createClass({
     }
     return (
       <View style={styles.container}>
-        <Image source={require('image!flowers')}
+        <Image source={require('./ios/WeatherProject/img/flowers.png')}
                resizeMode='cover'
                style={styles.backdrop}>
           <View style={styles.overlay}>
