@@ -1,3 +1,7 @@
+/**
+ * WeatherProject React Native App from Bonnie Eisenman, Learning React Native (O'Reilly), p45
+ * https://github.com/facebook/react-native
+ */
 var React = require('react-native');
 var {
   StyleSheet,
@@ -20,8 +24,8 @@ var WeatherProject = React.createClass({
   _handleTextChange: function(event) {
     var zip = event.nativeEvent.text;
     this.setState({zip: zip});
-    fetch('http://api.openweathermap.org/data/2.5/weather?q='
-      + zip + '&units=imperial')
+    fetch('http://api.openweathermap.org/data/2.5/weather?zip='
+      + zip + ',us')
       .then((response) => response.json())
       .then((responseJSON) => {
         this.setState({
