@@ -10,7 +10,7 @@ var {
 } = React;
 
 var Forecast = React.createClass({
-	render() {
+	render: function() {
 		return (
 			<View>
 				<Text style={styles.bigText}>
