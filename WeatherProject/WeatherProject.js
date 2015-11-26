@@ -16,7 +16,7 @@ var Forecast = require('./Forecast');
 var WeatherProject = React.createClass({
   getInitialState: function() {
     return {
-      zip: '',
+      zip: '07043',
       forecast: null
     };
   },
@@ -24,8 +24,8 @@ var WeatherProject = React.createClass({
   _handleTextChange: function(event) {
     var zip = event.nativeEvent.text;
     this.setState({zip: zip});
-    fetch('http://api.openweathermap.org/data/2.5/weather?zip='
-      + zip + ',us')
+    fetch('http://api.openweathermap.org/data/2.5/weather?zip=07043,us')
+//      + zip + ',us')
       .then((response) => response.json())
       .then((responseJSON) => {
         this.setState({
@@ -57,14 +57,9 @@ var WeatherProject = React.createClass({
           <View style={styles.overlay}>
            <View style={styles.row}>
              <Text style={styles.mainText}>
-               Current weather for
+               Current weather for 07043
              </Text>
-             <View style={styles.zipContainer}>
-               <TextInput
-                 style={[styles.zipCode, styles.mainText]}
-                 returnKeyType='go'
-                 onSubmitEditing={this._handleTextChange}/>
-             </View>
+
            </View>
            {content}
          </View>
